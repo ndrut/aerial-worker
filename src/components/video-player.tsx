@@ -1,16 +1,25 @@
 import { Component, onMount } from 'solid-js';
 import Hls from 'hls.js';
 
-const VIDEO_SRC = "https://aerial-cdn.ndru.io/undersea/tahiti-waves-2/4k/playlist.m3u8";
+const VIDEO_SRC = "https://aerial-cdn.ndru.io/china/paddy-field/4k/playlist.m3u8";
 
-const VideoPlayer: Component = () => {
+interface VideoPlayerProps {
+    src?: string;
+}
+
+
+const VideoPlayer: Component<VideoPlayerProps> = (props) => {
   let videoRef: HTMLVideoElement | undefined;
 
   onMount(() => {
     if (videoRef) {
       if (Hls.isSupported()) {
+        let videoSrc = VIDEO_SRC
+        if(props.src) {
+           videoSrc = props.src
+        }
         const hls = new Hls();
-        hls.loadSource(VIDEO_SRC);
+        hls.loadSource(videoSrc);
         hls.attachMedia(videoRef);
         hls.on(Hls.Events.MANIFEST_PARSED, () => {
           videoRef?.play().catch(error => {
@@ -53,6 +62,7 @@ const VideoPlayer: Component = () => {
   return (
     <video
       ref={videoRef}
+      controlslist=''
       controls
       autoplay // Autoplay is attempted by hls.js after manifest parsing or natively
       muted

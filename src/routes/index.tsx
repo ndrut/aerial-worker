@@ -1,7 +1,6 @@
-import { Title } from "@solidjs/meta";
 import VideoPlayer from "~/components/video-player";
 
-export default function Home() {
+export default function Index() {
   return (
     <main>
       <VideoPlayer  />

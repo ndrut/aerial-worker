@@ -7,12 +7,12 @@ import "./app.css";
 export default function App() {
   return (
     <Router
-      root={props => (
+      root={(props) => 
         <MetaProvider>
-          <Title>aerials - n dru</Title>
+          <Title>aerial - n dru</Title>
           <Suspense>{props.children}</Suspense>
         </MetaProvider>
-      )}
+      }
     >
       <FileRoutes />
     </Router>

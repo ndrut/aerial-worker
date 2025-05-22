@@ -1,7 +1,7 @@
 import { Component, onMount } from 'solid-js';
 import Hls from 'hls.js';
 
-const VIDEO_SRC = "https://aerial-cdn.ndru.io/china/paddy-field/4k/playlist.m3u8";
+const VIDEO_SRC = "https://aerial-cdn.ndru.io/undersea/palau-jellies-3/4k/playlist.m3u8";
 
 interface VideoPlayerProps {
     src?: string;

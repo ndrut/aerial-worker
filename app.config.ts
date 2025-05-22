@@ -1,6 +1,7 @@
 import { defineConfig } from "@solidjs/start/config";
 
 export default defineConfig({
+  ssr: true,
   server: {
     preset: "cloudflare-pages",
     compressPublicAssets: true,
@@ -9,6 +10,26 @@ export default defineConfig({
     },
     rollupConfig: {
       external: ["node:async_hooks"]
-    }
-  }
+    },
+    publicAssets: [
+          {
+                  baseURL: "/",
+                  dir: "./public",
+                  maxAge: 60  * 60 * 24 * 7, // 7 days
+              }
+          ],
+          routeRules: {
+              "/fonts/**": {
+                  headers: {
+                    "cache-control": "public, max-age=31536000, immutable",
+                  },
+                },
+                "/favicon.ico": {
+                  headers: {
+                    "cache-control": "public, max-age=31536000, immutable",
+                  },
+                },
+          
+      }
+      }  
 });

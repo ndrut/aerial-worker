@@ -8,7 +8,9 @@ export default createHandler(() => (
         <head>
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="preconnect" href="https://aerial-cdn.ndru.io/" />
           <link rel="icon" href="/favicon.ico" />
+          <title>aerial - n.dru</title>
           {assets}
         </head>
         <body>
